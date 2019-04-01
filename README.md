@@ -1,27 +1,27 @@
 # CarND-Kidnapped-Vehicle-Project
 
-## Project Introduction
+## 1. Project Introduction
 The robot has been kidnapped and transported to a new location! Luckily it has a map of this location, a (noisy) GPS estimate of its initial location, and lots of (noisy) sensor and control data.
 
 In this project I implement a 2-dimensional **particle filter** in C++. The particle filter will be given a map and some initial localization information (analogous to what a GPS would provide). At each time step the filter will also get observation and control data.
 
-## Localization Algorithm
+## 2. Localization Algorithm
 Localization, predicing the car location with high accuracy in the range of 3-10 cm, is a key part of self-driving vihecles.
 
 Global Positioning System (GPS), which makes use of triangulation to predict the position of an object detected by multiple satellites, usually provides inaccurate position (1-3 m or worse when signal is weak). To achieve an accuracy of 3-10 cm, sensor information from LIDAR and/or RADAR are used and fused together using a Particle Filter.
 
-### Particle Filter Algorithm Scheme
+### 2.1 Particle Filter Algorithm Scheme
 ![alt text](./images/pf.png)
 
-### Prediction Equations
+### 2.2 Prediction Equations
 ![alt text](./images/prediction.png)
 
-### Weight Update
+### 2.3 Weight Update
 The final weight of a particle is the product of probabilities calculated
 multivariate gaussian for all observations associated to landmarks.  
 ![alt text](./images/gf.png)
 
-### Resampling
+### 2.4 Resampling
 ```
   // Resample
   double beta = 0.0;
@@ -36,7 +36,7 @@ multivariate gaussian for all observations associated to landmarks.
   particles = new_particles;
 
 ```
-## Implementing the Particle Filter
+## 3. Implementing the Particle Filter
 The directory structure of this repository is as follows:
 
 ```
@@ -60,19 +60,20 @@ root
     |   particle_filter.h
 ```
 
-## Inputs to the Particle Filter
+## 4. Inputs to the Particle Filter
 You can find the inputs to the particle filter in the `data` directory.
 
-#### The Map*
+### 4.1 The Map*
 `map_data.txt` includes the position of landmarks (in meters) on an arbitrary Cartesian coordinate system. Each row has three columns
 1. x position
 2. y position
 3. landmark id
 
-### All other data the simulator provides, such as observations and controls.
+All other data the simulator provides, such as observations and controls.
 
 > * Map data provided by 3D Mapping Solutions GmbH.
-## Running the Code
+
+## 5. Running the Code
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
 
 This repository includes two files that can be used to set up and install uWebSocketIO for either Linux or Mac systems. For windows you can use either Docker, VMware, or even Windows 10 Bash on Ubuntu to install uWebSocketIO.
